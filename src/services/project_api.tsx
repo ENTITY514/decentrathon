@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react"
 
-const url = "https://api.iex.cloud"
+const url = "https://af15-95-141-140-176.ngrok-free.app"
 
 
 export const ProvidersApi = createApi({
