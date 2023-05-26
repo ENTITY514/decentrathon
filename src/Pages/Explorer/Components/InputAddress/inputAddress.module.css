@@ -1,0 +1,18 @@
+.container {
+    display: grid;
+    grid-template-columns: 5fr 1fr;
+    grid-gap: 24px;
+    height: 70px;
+}
+
+.button {
+    background: #00BA34;
+    border: 2px solid #2E323A;
+    border-radius: 12px;
+    line-height: 70px;
+    text-align: center;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+}
