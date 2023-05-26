@@ -1,6 +1,6 @@
 import style from "./title.module.css"
 
-enum ISizes {
+export enum ISizes {
     BIG,
     MEDIUM
 }

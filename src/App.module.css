@@ -3,11 +3,12 @@
   min-height: 100vh;
   display: grid;
   grid-template-columns: 1fr 5fr;
-  grid-gap: 20px;
-  background: #1E1E1E;
+  background:  #14151A;
   color: white;
 }
 
 .box{
   padding-top: 50px;
+  padding-left: 24px;
+  padding-right: 24px;
 }

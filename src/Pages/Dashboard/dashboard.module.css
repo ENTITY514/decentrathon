@@ -1,5 +1,5 @@
-.infoBoxes{
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
+.container{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 24px;
 }
