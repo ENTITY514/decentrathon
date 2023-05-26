@@ -3,6 +3,7 @@ import style from './App.module.css';
 import { Nav } from './Components/Nav/nav';
 import { Dashboard } from './Pages/Dashboard/dashboard';
 import { Explorer } from './Pages/Explorer/explorer';
+import { Provider } from './Pages/Providers/provider';
 
 export const App = () => {
   return (
@@ -13,6 +14,7 @@ export const App = () => {
           <Routes>
             <Route path={""} element={<Dashboard />} />
             <Route path={"explorer"} element={<Explorer />} />
+            <Route path={"provider"} element={<Provider />} />
           </Routes>
         </div>
       </BrowserRouter>
