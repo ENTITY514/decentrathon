@@ -10,23 +10,23 @@ export const Infomations = () => {
             <div className={style.info_box}>
                 <div className={style.row}>
                     <Text color={TextStyle.GREY} >SP Name</Text>
-                    <Text color={TextStyle.GREEN}>Zenon</Text>
+                    <Text color={TextStyle.WHITE}>Zenon</Text>
                 </div>
                 <div className={style.row}>
                     <Text color={TextStyle.GREY} >Seal Address</Text>
-                    <Text color={TextStyle.GREEN}>0xE4F1Ac4B9312724D2819347c5c91252b650C4AEb</Text>
+                    <Text color={TextStyle.GREEN} cursor={"pointer"}>0xE4F1Ac4B9312724D2819347c5c91252b650C4AEb</Text>
                 </div>
                 <div className={style.row}>
                     <Text color={TextStyle.GREY} >Funding Address</Text>
-                    <Text color={TextStyle.GREEN}>0xd641C35f947Eb60676f0e0793691bB174256C651</Text>
+                    <Text color={TextStyle.GREEN} cursor={"pointer"}>0xd641C35f947Eb60676f0e0793691bB174256C651</Text>
                 </div>
                 <div className={style.row}>
                     <Text color={TextStyle.GREY} >Operator Address</Text>
-                    <Text color={TextStyle.GREEN}>0x22804504786F44289D4156E7317142e25B92c00e</Text>
+                    <Text color={TextStyle.GREEN} cursor={"pointer"}>0x22804504786F44289D4156E7317142e25B92c00e</Text>
                 </div>
                 <div className={style.row}>
                     <Text color={TextStyle.GREY} >Approval Address</Text>
-                    <Text color={TextStyle.GREEN}>0xaF07AdBb21029adf12FB6E4515Ed8dA0A7e252a2</Text>
+                    <Text color={TextStyle.GREEN} cursor={"pointer"}>0xaF07AdBb21029adf12FB6E4515Ed8dA0A7e252a2</Text>
                 </div>
                 <div className={style.row}>
                     <Text color={TextStyle.GREY} >Total Deposit</Text>
@@ -38,7 +38,7 @@ export const Infomations = () => {
                 </div>
                 <div className={style.row}>
                     <Text color={TextStyle.GREY} >Endpoint</Text>
-                    <Text color={TextStyle.WHITE}>https://gnfd-testnet-sp-2.bnbchain.org</Text>
+                    <Text color={TextStyle.GREEN} cursor={"pointer"}>https://gnfd-testnet-sp-2.bnbchain.org</Text>
                 </div>
             </div>
         </Wrapper>

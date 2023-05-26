@@ -6,7 +6,7 @@ import style from './dashboard.module.css';
 export const Dashboard = () => {
     return (
         <div className={style.container}>
-            <Title title={'DashBoard'} />
+            <Title title={'Dashboard'} />
             <InfoBoxes />
             <ActiveServiceProviders />
         </div>

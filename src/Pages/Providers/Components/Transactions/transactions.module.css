@@ -8,8 +8,6 @@
     display: grid;
     grid-template-columns: 2fr 1fr 1fr;
     border-bottom: 1px solid #2E323A;
-    padding:12px;
-
+    margin: 24px 0;
+    padding-left: 10px;
 }
-
-.info_box {}

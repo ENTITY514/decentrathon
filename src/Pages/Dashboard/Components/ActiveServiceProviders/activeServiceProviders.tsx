@@ -24,7 +24,7 @@ export const ActiveServiceProviders: React.FC = () => {
                         providers.map(provider => {
                             return (
                                 <div className={style.provider_wrapper} key={nanoid()} onClick={() => { nav("provider") }}>
-                                    <Text color={TextStyle.GREEN}>{provider}</Text>
+                                    <Text color={TextStyle.GREEN} cursor={"pointer"}>{provider}</Text>
                                 </div>
                             )
                         })

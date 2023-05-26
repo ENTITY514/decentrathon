@@ -10,15 +10,17 @@ interface ITextProps {
     children: string | JSX.Element | React.ReactNode
     color: TextStyle
     fontSize?: string
+    cursor?: string
 }
 
 export const Text: React.FC<ITextProps> = ({
     children,
     color = TextStyle.WHITE,
-    fontSize = "16px"
+    fontSize = "16px",
+    cursor
 }) => {
     return (
-        <div className={style.container} style={{ color, fontSize }}>
+        <div className={style.container} style={{ color, fontSize, cursor }}>
             {children}
         </div>
     )
