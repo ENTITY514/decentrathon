@@ -9,7 +9,7 @@ interface IInfoBox {
 
 export const InfoBox: React.FC<IInfoBox> = ({ label, value }) => {
     return (
-        <Wrapper padding='12px 24px' margin='0'>
+        <Wrapper padding='24px' margin='0'>
             <Text color={TextStyle.GREY} fontSize='12px'>{label}</Text>
             <Title title={value} />
         </Wrapper>
