@@ -8,4 +8,5 @@ export enum WINDOWS {
 
 export interface ISidebar {
     active_window: WINDOWS
+    explorer_query:string
 }

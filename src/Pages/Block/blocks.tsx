@@ -1,9 +1,9 @@
 import { useSearchParams } from 'react-router-dom';
 import { Title } from '../../UI/Title/title';
 import style from './blocks.module.css';
-import { BlockInfomation } from './Components/Information/information';
+import { BlockInfomation } from './Components/Information/block_information';
 
-export const Block = () => {
+export const BlockWrapper = () => {
     const [searchParams] = useSearchParams();
     const block = searchParams.get("block")
     if (block) {

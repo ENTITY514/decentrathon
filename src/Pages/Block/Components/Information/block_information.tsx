@@ -11,21 +11,18 @@ interface Ibl {
 }
 export const BlockInfomation: React.FC<Ibl> = ({ block }) => {
     const { data: block_, isLoading, isError } = ProvidersApi.useGetBlockQuery(block)
-    console.log(block)
-    console.log(block_)
     if (block_) {
         return (
             <Wrapper padding='24px' margin='0'>
                 <Title title={'Information'} size={ISizes.MEDIUM} />
                 <div className={style.info_box}>
                     <div className={style.row}>
-                        <Text color={TextStyle.GREY} >
-                            {block_.hash}</Text>
+                        <Text color={TextStyle.GREY} >SP Name</Text>
                         <Text color={TextStyle.WHITE}>Zenon</Text>
                     </div>
                     <div className={style.row}>
                         <Text color={TextStyle.GREY} >Seal Address</Text>
-                        <Text color={TextStyle.GREEN} cursor={"pointer"}>0xE4F1Ac4B9312724D2819347c5c91252b650C4AEb</Text>
+                        <Text color={TextStyle.GREEN} cursor={"pointer"}>{block_.data.hash}</Text>
                     </div>
                     <div className={style.row}>
                         <Text color={TextStyle.GREY} >Funding Address</Text>

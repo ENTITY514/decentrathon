@@ -98,11 +98,13 @@ type BlocksType = {
 
 
 type getBlockType = {
-    index: string
-    hash: string
-    time: string
-    proposer: string
-    transactions: Array<getBlockTransactionsType>
+    data: {
+        index: string
+        hash: string
+        time: string
+        proposer: string
+        transactions: Array<getBlockTransactionsType>
+    }
 }
 
 type getBlockTransactionsType = {
@@ -155,7 +157,7 @@ export const ProvidersApi = createApi({
                 url: `/getServiceProvider/${address}`
             })
         }),
-        getIsProvider: build.query<boolean, string>({
+        getIsProvider: build.query<{ data: boolean }, string>({
             query: (address) => ({
                 url: `/isProvider/${address}`
             })
@@ -171,8 +173,8 @@ export const ProvidersApi = createApi({
             })
         }),
         getBlock: build.query<getBlockType, string>({
-            query: (index) => ({
-                url: `/getBlock/${index}`
+            query: (block_index) => ({
+                url: `/getBlock/${block_index}`
             })
         }),
         getTransactions: build.query<getTransactionsType, string>({
