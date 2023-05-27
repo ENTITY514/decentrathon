@@ -44,7 +44,7 @@ const data = [
 
 export const ActiveServiceProvidersCharts: React.FC = () => {
     return (
-        <Wrapper padding='24px' margin='0'>
+        <Wrapper padding='24px' margin='0' height='400px'>
             <div className={style.box}>
                 <Title title={'Active Service Providers'} size={ISizes.MEDIUM} />
                 <Charts />
@@ -58,7 +58,7 @@ export default class Charts extends PureComponent {
     render() {
         return (
             <ResponsiveContainer width="100%" height="100%">
-                <AreaChart width={730} height={250} data={data}>
+                <AreaChart data={data}>
                     <defs>
                         <linearGradient id="colorPv" x1="0" y1="0" x2="0" y2="1">
                             <stop offset="5%" stopColor="#00BA34" stopOpacity={0.9} />
