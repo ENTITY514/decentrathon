@@ -1,11 +1,13 @@
-.box{
+.box {
     display: grid;
     grid-template-columns: 1fr;
     grid-gap: 24px;
 }
 
 .provider_wrapper {
-    display: grid;
+    display: flex;
+    flex-direction: row;
+    gap: 6px;
     align-items: center;
     height: 40px;
     border-bottom: 1px solid #2E323A;

@@ -24,12 +24,12 @@ export const App = () => {
         <div className={style.box}>
           <Routes>
             <Route path={""} element={<Dashboard />} />
-            <Route path={"explorer"} element={<Explorer />} />
-            <Route path={"provider"} element={<Provider />} />
-            <Route path={"statistics"} element={<Statistics />} />
-            <Route path={"blocks"} element={<Blocks />} />
-            <Route path={"block"} element={<Block />} />
-            <Route path={"error"} element={<Error />} />
+            <Route path={"/explorer"} element={<Explorer />} />
+            <Route path={"/provider/*"} element={<Provider />} />
+            <Route path={"/statistics"} element={<Statistics />} />
+            <Route path={"/blocks"} element={<Blocks />} />
+            <Route path={"/block"} element={<Block />} />
+            <Route path={"/error"} element={<Error />} />
           </Routes>
         </div>
       </BrowserRouter>

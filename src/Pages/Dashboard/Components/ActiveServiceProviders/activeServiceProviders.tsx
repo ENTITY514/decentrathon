@@ -20,8 +20,9 @@ export const ActiveServiceProviders: React.FC = () => {
                         {
                             stats.data.map(provider => {
                                 return (
-                                    <div className={style.provider_wrapper} key={nanoid()} onClick={() => { nav("provider") }}>
-                                        <Text color={TextStyle.GREEN} cursor={"pointer"}>{provider.title + " " + provider.address}</Text>
+                                    <div className={style.provider_wrapper} key={nanoid()} onClick={() => { nav("/provider/") }}>
+                                        <Text color={TextStyle.GREEN} cursor={"pointer"}>{provider.title + " "}</Text>
+                                        <Text color={TextStyle.GREY} cursor={"pointer"}>{provider.address.toString().slice(0, 6) + "..." + provider.address.toString().slice(-6)}</Text>
                                     </div>
                                 )
                             })

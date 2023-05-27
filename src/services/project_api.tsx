@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react"
 
-type GetStatType = {   //статистика
+type GetStatType = {
     data: {
         activeProviders: number
         averageLatency: number
@@ -21,7 +21,8 @@ type activeProvidersGraphType = {
     providersCount: number
 }
 
-type ProvidersType = {  //провайдеры
+
+type ProvidersType = {
     data: Array<ProvidersTypeInfo>
 
 }
@@ -30,14 +31,16 @@ type ProvidersTypeInfo = {
     title: string
 }
 
+
 type getServiceProvidersType = {
     data: getServiceProviders
 }
+
 type getServiceProviders = {
     provider: providerTypeFull
     price: priceType
     kpi: kpiType
-    transactions: dataType
+    transactions: Array<transactionsType>
 }
 type providerTypeFull = {
     title: string
@@ -47,25 +50,67 @@ type providerTypeFull = {
     approvalAddress: string
     endpoint: string
     status: string
-    deposit: string
+    deposit: number
     balance: number
 }
 type priceType = {
-    readPrice: string
-    storePrice: string
+    readPrice: number
+    storePrice: number
 }
 type kpiType = {
     latency: number
     uptime: number
-}
-type dataType = {
-    data: Array<transactionsType>
 }
 type transactionsType = {
     hash: string
     block: string
     time: string
 }
+
+type getIsProviderType = {
+    data: true
+}
+
+
+type getAccountType = {
+    data: AccountType
+}
+type AccountType = {
+    balance: number
+    transactions: Array<transactionsDataType>
+}
+type transactionsDataType = {
+    hash: string
+    block: string
+    time: string
+}
+
+
+type getBlocksType = {
+    data: Array<BlocksType>
+}
+type BlocksType = {
+    index: string
+    time: string
+    txCount: string
+}
+
+
+
+type getBlockType = {
+    index: string
+    hash: string
+    time: string
+    proposer: string
+    transactions: Array<getBlockTransactionsType>
+}
+
+type getBlockTransactionsType = {
+    hash: string
+    block: string
+    time: string
+}
+
 const url = "https://0691-2-133-159-46.ngrok-free.app/api"
 
 export const ProvidersApi = createApi({
@@ -84,8 +129,29 @@ export const ProvidersApi = createApi({
         }),
         getServiceProvider: build.query<ProvidersType, string>({
             query: (address) => ({
-                url: `getServiceProvider/${address}`
+                url: `/getServiceProvider/${address}`
+            })
+        }),
+        getIsProvider: build.query<boolean, string>({
+            query: (address) => ({
+                url: `/isProvider/${address}`
+            })
+        }),
+        getAccount: build.query<getAccountType, string>({
+            query: (address) => ({
+                url: `/getAccount/${address}`
+            })
+        }),
+        getBlocks: build.query<getBlocksType, string>({
+            query: () => ({
+                url: `/getBlocks`
+            })
+        }),
+        getBlock: build.query<getBlockType, string>({
+            query: (index) => ({
+                url: `/getBlock/${index}`
             })
         }),
     })
 })
+

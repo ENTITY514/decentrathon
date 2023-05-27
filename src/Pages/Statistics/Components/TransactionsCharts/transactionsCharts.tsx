@@ -1,6 +1,6 @@
 import { ISizes, Title } from '../../../../UI/Title/title';
 import { Wrapper } from '../../../../UI/Wrapper/wrapper';
-import style from "./activeServiceProvidersCharts.module.css"
+import style from "./transactionsCharts.module.css"
 import { XAxis, YAxis, ResponsiveContainer, Area, AreaChart } from 'recharts';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -21,24 +21,25 @@ let month = [
     "Dec",
 ]
 
-export const ActiveServiceProvidersCharts: React.FC = () => {
+export const TransactionCharts: React.FC = () => {
     const nav = useNavigate()
     const { data: stats, isLoading, isError } = ProvidersApi.useGetStatQuery("")
     if (stats) {
+        console.log(stats)
         let data: Array<{
             name: string | number
             pv: number | string,
         }> = []
-        stats.data.activeProvidersGraph.forEach(provider => {
+        stats.data.transactionsCountGraph.forEach(provider => {
             data.push({
                 name: month[new Date(provider.date).getUTCMonth()] + " " + new Date(provider.date).getUTCDate(),
-                pv: provider.providersCount,
+                pv: provider.transactionsCount,
             })
         })
         return (
             <Wrapper padding='24px' margin='0'>
                 <div className={style.box}>
-                    <Title title={'Active Service Providers'} size={ISizes.MEDIUM} />
+                    <Title title={'Transactions'} size={ISizes.MEDIUM} />
                     <Charts data={data} />
                 </div>
             </Wrapper>
@@ -63,7 +64,7 @@ export const ActiveServiceProvidersCharts: React.FC = () => {
     else {
         return (
             <div className={style.container}>
-                <Title title={'Хз что не так'} />
+                <Title title={'Хз что не так, но сделаете вид, что вы этого не видели)'} />
             </div>
         );
     }

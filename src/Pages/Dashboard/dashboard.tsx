@@ -15,9 +15,9 @@ export const Dashboard = () => {
         return (
             <div className={style.container}>
                 <Title title={'Dashboard'} />
+                <div className="binance-widget-marquee" data-cmc-ids="1839" data-theme="dark" data-transparent="true" data-locale="en" data-powered-by="Powered by" data-disclaimer="Disclaimer" ></div>
                 <InfoBoxes />
                 <div className={style.box}>
-                    <ActiveServiceProvidersCharts />
                     <ActiveServiceProvidersCharts />
                 </div>
                 <ActiveServiceProviders />

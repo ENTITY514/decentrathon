@@ -1,7 +1,7 @@
 import { ISizes, Title } from '../../../../UI/Title/title';
 import { Wrapper } from '../../../../UI/Wrapper/wrapper';
 import style from "./activeServiceProvidersCharts.module.css"
-import { XAxis, YAxis, ResponsiveContainer, Area, AreaChart } from 'recharts';
+import { XAxis, YAxis, ResponsiveContainer, Area, AreaChart, Tooltip } from 'recharts';
 import React, { PureComponent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ProvidersApi } from '../../../../services/project_api';
