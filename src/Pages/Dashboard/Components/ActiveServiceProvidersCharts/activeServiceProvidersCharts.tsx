@@ -44,7 +44,7 @@ const data = [
 
 export const ActiveServiceProvidersCharts: React.FC = () => {
     return (
-        <Wrapper padding='24px' margin='0' height='400px'>
+        <Wrapper padding='24px' margin='0'>
             <div className={style.box}>
                 <Title title={'Active Service Providers'} size={ISizes.MEDIUM} />
                 <Charts />
