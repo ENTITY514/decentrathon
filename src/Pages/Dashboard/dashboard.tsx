@@ -17,19 +17,14 @@ export const Dashboard = () => {
                 <Title title={'Dashboard'} />
                 <div className="binance-widget-marquee" data-cmc-ids="1839" data-theme="dark" data-transparent="true" data-locale="en" data-powered-by="Powered by" data-disclaimer="Disclaimer" ></div>
                 <InfoBoxes />
-                <div className={style.box}>
-                    <ActiveServiceProvidersCharts />
-                </div>
                 <ActiveServiceProviders />
             </div>
         );
     }
     else if (stats_load || service_load) {
         return (
-            <div className={style.load_container}>
-                <Loader />
-            </div>
-        );
+            <Loader />
+        )
     }
     else if (isError) {
         nav("error")

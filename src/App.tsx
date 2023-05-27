@@ -9,6 +9,7 @@ import { Statistics } from './Pages/Statistics/statistics';
 import * as PusherPushNotifications from "@pusher/push-notifications-web";
 import { Blocks } from './Pages/Blocks/blocks';
 import { Block } from './Pages/Block/blocks';
+import { ProvidersApi } from './services/project_api';
 
 export const App = () => {
   const beamsClient = new PusherPushNotifications.Client({

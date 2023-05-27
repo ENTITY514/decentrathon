@@ -27,13 +27,11 @@ export const Statistics: React.FC = () => {
     }
     else if (isLoading) {
         return (
-            <div className={style.load_container}>
-                <Loader />
-            </div>
+            <Loader />
         );
     }
     else if (isError) {
-        nav("error")
+        nav("/error")
         return (
             <div className={style.container}>
                 <Title title={'Error'} />

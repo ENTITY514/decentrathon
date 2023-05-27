@@ -111,6 +111,29 @@ type getBlockTransactionsType = {
     time: string
 }
 
+type getTransactionsType = {
+    data: Array<TransactionsType>
+}
+type TransactionsType = {
+    hash: string
+    block: string
+    time: string
+}
+
+
+
+type getTransactionType = {
+    hash: string
+    block: string
+    time: string
+    gas: GasType
+    logs: any
+}
+type GasType = {
+    maxGas: string
+    usedGas: string
+}
+
 const url = "https://0691-2-133-159-46.ngrok-free.app/api"
 
 export const ProvidersApi = createApi({
@@ -152,6 +175,15 @@ export const ProvidersApi = createApi({
                 url: `/getBlock/${index}`
             })
         }),
+        getTransactions: build.query<getTransactionsType, string>({
+            query: () => ({
+                url: `/getTransactions`
+            })
+        }),
+        getTransaction: build.query<getTransactionType, string>({
+            query: (hash) => ({
+                url: `/getTransaction/${hash}`
+            })
+        }),
     })
 })
-
