@@ -66,7 +66,7 @@ type transactionsType = {
     block: string
     time: string
 }
-const url = "https://97dc-95-141-140-176.ngrok-free.app/api/"
+const url = "https://0691-2-133-159-46.ngrok-free.app/api"
 
 export const ProvidersApi = createApi({
     reducerPath: "ProvidersApi",

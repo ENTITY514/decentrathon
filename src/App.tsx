@@ -8,6 +8,7 @@ import { Error } from './Pages/Error/error';
 import { Statistics } from './Pages/Statistics/statistics';
 import * as PusherPushNotifications from "@pusher/push-notifications-web";
 import { Blocks } from './Pages/Blocks/blocks';
+import { Block } from './Pages/Block/blocks';
 
 export const App = () => {
   const beamsClient = new PusherPushNotifications.Client({
@@ -27,6 +28,7 @@ export const App = () => {
             <Route path={"provider"} element={<Provider />} />
             <Route path={"statistics"} element={<Statistics />} />
             <Route path={"blocks"} element={<Blocks />} />
+            <Route path={"block"} element={<Block />} />
             <Route path={"error"} element={<Error />} />
           </Routes>
         </div>
