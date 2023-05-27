@@ -5,7 +5,7 @@ import { HomeIcon, SearchIcon, StatisticsIcon } from './icons';
 import { useState } from 'react';
 
 export const Nav = () => {
-    const [link, setLink] = useState<1 | 2 | 3>()
+    const [link, setLink] = useState<number>()
     return (
         <div className={style.container}>
             <div className={style.container1}>
@@ -21,6 +21,11 @@ export const Nav = () => {
                 <div className={(link !== 3) ? style.link_box : style.link_boxActive}>
                     <StatisticsIcon color={link} />
                     <Link onClick={() => setLink(3)} className={(link !== 3) ? style.link : style.linkActive} to={"statistics"}>Statistics</Link>
+                </div>
+
+                <div className={(link !== 4) ? style.link_box : style.link_boxActive}>
+                    <StatisticsIcon color={link} />
+                    <Link onClick={() => setLink(4)} className={(link !== 4) ? style.link : style.linkActive} to={"blocks"}>Blocks</Link>
                 </div>
             </div>
         </div>
