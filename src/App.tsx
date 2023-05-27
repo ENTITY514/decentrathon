@@ -6,8 +6,15 @@ import { Explorer } from './Pages/Explorer/explorer';
 import { Provider } from './Pages/Providers/provider';
 import { Error } from './Pages/Error/error';
 import { Statistics } from './Pages/Statistics/statistics';
+import * as PusherPushNotifications from "@pusher/push-notifications-web";
 
 export const App = () => {
+  const beamsClient = new PusherPushNotifications.Client({
+    instanceId: "2d2fd629-0157-4b64-a648-96ea1d631e52",
+  });
+
+  beamsClient.start().then(() => {
+  });
   return (
     <div className={style.app}>
       <BrowserRouter>

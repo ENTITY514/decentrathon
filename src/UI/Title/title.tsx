@@ -6,7 +6,7 @@ export enum ISizes {
 }
 
 interface ITitleProps {
-    title: string
+    title: string | number
     color?: string
     size?: ISizes
 }

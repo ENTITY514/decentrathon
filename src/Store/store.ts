@@ -15,7 +15,7 @@ export const setupStore = () => {
                 immutableCheck: false,
                 serializableCheck: false,
                 thunk: true,
-            })
+            }).concat(ProvidersApi.middleware)
         },
         devTools: process.env.NODE_ENV !== 'production'
     })

@@ -1,7 +1,7 @@
 import { ISizes, Title } from '../../../../UI/Title/title';
 import { Wrapper } from '../../../../UI/Wrapper/wrapper';
 import style from "./activeServiceProvidersCharts.module.css"
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Area, AreaChart } from 'recharts';
+import { XAxis, YAxis, ResponsiveContainer, Area, AreaChart } from 'recharts';
 import React, { PureComponent } from 'react';
 
 const data = [

@@ -4,7 +4,7 @@ import { Wrapper } from '../../UI/Wrapper/wrapper';
 
 interface IInfoBox {
     label: string
-    value: string
+    value: string | number
 }
 
 export const InfoBox: React.FC<IInfoBox> = ({ label, value }) => {
