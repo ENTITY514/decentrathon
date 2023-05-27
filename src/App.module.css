@@ -1,14 +1,17 @@
 .app {
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
   display: grid;
   grid-template-columns:300px 1fr;
   background:  #14151A;
   color: white;
+  overflow-y: hidden;
 }
 
 .box{
   padding-top: 50px;
   padding-left: 24px;
   padding-right: 24px;
+  padding-bottom: 100px;
+  overflow-y: auto;
 }

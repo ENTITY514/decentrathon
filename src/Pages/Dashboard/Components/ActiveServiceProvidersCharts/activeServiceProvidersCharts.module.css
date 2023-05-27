@@ -2,6 +2,6 @@
     display: grid;
     grid-template-columns: 1fr;
     grid-gap: 32px;
-    grid-template-rows: 40px 350px;
-    height: 400px;
+    grid-template-rows: 40px 200px;
+    height: 240px;
 }
