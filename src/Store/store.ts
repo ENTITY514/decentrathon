@@ -1,9 +1,9 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import userSlice from "./reducers/UserSlice";
+import sidebarSlice from "./reducers/SideBar";
 import { ProvidersApi } from "../services/project_api";
 
 const rootReducers = combineReducers({
-    userSlice,
+    sidebarSlice,
     [ProvidersApi.reducerPath]: ProvidersApi.reducer
 })
 

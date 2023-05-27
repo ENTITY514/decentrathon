@@ -1,9 +1,17 @@
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Text, TextStyle } from '../../../../UI/Text/text';
 import { ISizes, Title } from '../../../../UI/Title/title';
 import { Wrapper } from '../../../../UI/Wrapper/wrapper';
 import style from './information.module.css';
+import { ProvidersApi } from '../../../../services/project_api';
 
 export const Infomations = () => {
+    const [searchParams] = useSearchParams();
+    const provider_address = searchParams.get("provider_address")
+
+    const nav = useNavigate()
+    const { data: provider, isLoading, isError } = ProvidersApi.useGetIsProviderQuery("")
+
     return (
         <Wrapper padding='24px' margin='0'>
             <Title title={'Information'} size={ISizes.MEDIUM} />

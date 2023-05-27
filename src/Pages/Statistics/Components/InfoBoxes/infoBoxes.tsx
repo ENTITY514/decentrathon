@@ -12,7 +12,7 @@ export const InfoBoxes: React.FC = () => {
         return (
             <div className={style.container}>
                 <InfoBox label={'Active Service Providers'} value={stats.data.activeProviders} />
-                <InfoBox label={'Average latency'} value={Math.floor(stats.data.averageLatency) + "ms"} />
+                <InfoBox label={'Transactions count'} value={stats.data.transactionsCount.toString().slice(0, -3) + " " + stats.data.transactionsCount.toString().slice(-3)} />
                 <InfoBox label={'Blocks count'} value={stats.data.latestBlock.toString().slice(0, -3) + " " + stats.data.latestBlock.toString().slice(-3)} />
             </div>
         );

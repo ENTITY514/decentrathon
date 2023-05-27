@@ -11,7 +11,7 @@ export const InfoBoxesTwo = () => {
     if (stats) {
         return (
             <div className={style.container}>
-                <InfoBox label={'Transactions count'} value={stats.data.transactionsCount.toString().slice(0, -3) + " " + stats.data.transactionsCount.toString().slice(-3)} />
+                <InfoBox label={'Average latency'} value={Math.floor(stats.data.averageLatency) + "ms"} />
                 <InfoBox label={'Average block time'} value={stats.data.averageBlockTime + "ms"} />
                 <InfoBox label={'Total addresses'} value={stats.data.accountsCount.toString().slice(0, -3) + " " + stats.data.accountsCount.toString().slice(-3)} />
             </div>

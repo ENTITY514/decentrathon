@@ -20,7 +20,7 @@ export const ActiveServiceProviders: React.FC = () => {
                         {
                             stats.data.map(provider => {
                                 return (
-                                    <div className={style.provider_wrapper} key={nanoid()} onClick={() => { nav("/provider/") }}>
+                                    <div className={style.provider_wrapper} key={nanoid()} onClick={() => { nav("/provider?provider_address= " + provider.address) }}>
                                         <Text color={TextStyle.GREEN} cursor={"pointer"}>{provider.title + " "}</Text>
                                         <Text color={TextStyle.GREY} cursor={"pointer"}>{provider.address.toString().slice(0, 6) + "..." + provider.address.toString().slice(-6)}</Text>
                                     </div>
