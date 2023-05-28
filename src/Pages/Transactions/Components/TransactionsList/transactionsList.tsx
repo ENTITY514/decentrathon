@@ -4,12 +4,15 @@ import { Wrapper } from '../../../../UI/Wrapper/wrapper';
 import style from './transactionsList.module.css';
 import { ProvidersApi } from '../../../../services/project_api';
 import { Loader } from '../../../../Components/Loader/loader';
+import { useAppDispatch } from '../../../../Store/hooks/redux';
+import { WINDOWS } from '../../../../Store/models/ISideBar';
+import { SidebarSlice } from '../../../../Store/reducers/SideBar';
+import { Transactions } from '../../transactions';
 
 export const TransactionsList: React.FC = () => {
+    const dispatch = useAppDispatch()
+    const actions = SidebarSlice.actions
     const nav = useNavigate()
-    const HandleClick = (index: string) => {
-        nav("/transaction?q=" + index)
-    }
     const { data: trasactions } = ProvidersApi.useGetTransactionsQuery("")
 
     if (trasactions) {
@@ -22,15 +25,17 @@ export const TransactionsList: React.FC = () => {
                 </div>
 
                 <div className={style.info_box}>
-                    {trasactions.data.map(trasaction => {
-                        return (
-                            <div className={style.row} onClick={() => { HandleClick(trasaction.hash) }}>
-                                <Text color={TextStyle.GREEN} cursor={"pointer"} >{trasaction.hash.toString().slice(0, 6) + "..." + trasaction.hash.toString().slice(-6)}</Text>
-                                <Text color={TextStyle.WHITE} >{trasaction.block}</Text>
-                                <Text color={TextStyle.WHITE} cursor={"pointer"} >{trasaction.time}</Text>
-                            </div>
-                        )
-                    })}
+                    {trasactions.data.length ?
+                        trasactions.data.map(trasaction => {
+                            return (
+                                <div className={style.row}>
+                                    <Text color={TextStyle.GREEN} cursor={"pointer"} onClick={() => { nav("/transaction?q=" + trasaction.hash) }}>{trasaction.hash.toString().slice(0, 6) + "..." + trasaction.hash.toString().slice(-6)}</Text>
+                                    <Text color={TextStyle.GREEN} onClick={() => { nav("/block?block=" + trasaction.block) }} cursor={"pointer"} >{trasaction.block}</Text>
+                                    <Text color={TextStyle.WHITE} >{trasaction.time}</Text>
+                                </div>
+                            )
+                        }) : null
+                    }
                 </div>
             </Wrapper>
         );

@@ -10,6 +10,7 @@ import { Blocks } from './Pages/Blocks/blocks';
 import { BlockWrapper } from './Pages/Block/blocks'; import { AccountWrapper } from './Pages/AccountWrapper/account_wrapper';
 import { Transactions } from './Pages/Transactions/transactions';
 import { Transaction } from './Pages/Transaction/transaction';
+import { Validators } from './Pages/Validators/validators';
 ;
 
 export const App: React.FC = () => {
@@ -30,6 +31,7 @@ export const App: React.FC = () => {
             <Route path={"/block"} element={<BlockWrapper />} />
             <Route path={"/account"} element={<AccountWrapper />} />
             <Route path={"/error"} element={<Error />} />
+            <Route path={"/validators"} element={<Validators />} />
           </Routes>
         </div>
       </BrowserRouter>

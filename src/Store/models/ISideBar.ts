@@ -3,7 +3,8 @@ export enum WINDOWS {
     EXPLORER,
     BLOCKS,
     TRANSACTIONS,
-    STATISTICS
+    STATISTICS,
+    VALIDATORS
 }
 
 export interface ISidebar {

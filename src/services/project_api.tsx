@@ -142,6 +142,14 @@ type GasType = {
     usedGas: string
 }
 
+type getValidatorsType = {
+    data: Array<ValidatorType>
+}
+type ValidatorType = {
+    address: string
+    votingPower: string
+}
+
 const url = "https://decentrathon.undefined.ink/api"
 
 export const ProvidersApi = createApi({
@@ -191,6 +199,11 @@ export const ProvidersApi = createApi({
         getTransaction: build.query<getTransactionType, string>({
             query: (hash) => ({
                 url: `/getTransaction/${hash}`
+            })
+        }),
+        getValidators: build.query<getValidatorsType, string>({
+            query: () => ({
+                url: "/getValidators"
             })
         }),
     })

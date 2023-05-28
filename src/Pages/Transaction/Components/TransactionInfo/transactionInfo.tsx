@@ -9,7 +9,7 @@ export const TransactionsInfo: React.FC = () => {
     const nav = useNavigate()
     const [searchParams] = useSearchParams();
     const q = searchParams.get("q") as string
-    const { data: transaction, isLoading, isError } = ProvidersApi.useGetTransactionQuery(q)
+    const { data: transaction } = ProvidersApi.useGetTransactionQuery(q)
 
     if (transaction) {
         return (
@@ -22,7 +22,7 @@ export const TransactionsInfo: React.FC = () => {
                     </div>
                     <div className={style.row}>
                         <Text color={TextStyle.GREY} >Block Height</Text>
-                        <Text color={TextStyle.GREEN} cursor={"pointer"}>{transaction.data.block}</Text>
+                        <Text color={TextStyle.GREEN} cursor={"pointer"} onClick={()=>{nav("/block?block=" + transaction.data.block)}}>{transaction.data.block}</Text>
                     </div>
                     <div className={style.row}>
                         <Text color={TextStyle.GREY} >Max Gas & Gas Used</Text>

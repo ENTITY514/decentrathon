@@ -7,9 +7,6 @@ import { ProvidersApi } from '../../../../services/project_api';
 
 export const BlocksInformation: React.FC = () => {
     const nav = useNavigate()
-    const HandleClick = (index: string) => {
-        nav("/block?block=" + index)
-    }
     const { data: blocks } = ProvidersApi.useGetBlocksQuery("")
 
     if (blocks) {
@@ -24,10 +21,10 @@ export const BlocksInformation: React.FC = () => {
                 <div className={style.info_box}>
                     {blocks.data.map(block => {
                         return (
-                            <div className={style.row} onClick={() => { HandleClick(block.index) }}>
-                                <Text color={TextStyle.GREEN} cursor={"pointer"} >{block.index}</Text>
-                                <Text color={TextStyle.WHITE} >{block.time}</Text>
-                                <Text color={TextStyle.WHITE} cursor={"pointer"} >{block.txCount}</Text>
+                            <div className={style.row}>
+                                <Text color={TextStyle.GREEN} cursor={"pointer"} onClick={() => { nav("/block?block=" + block.index) }}>{block.index}</Text>
+                                <Text color={TextStyle.WHITE}>{block.time}</Text>
+                                <Text color={TextStyle.WHITE}>{block.txCount}</Text>
                             </div>
                         )
                     })}

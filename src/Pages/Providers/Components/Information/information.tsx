@@ -29,7 +29,7 @@ export const Infomations = () => {
                     </div>
                     <div className={style.row}>
                         <Text color={TextStyle.GREY}>Operator Address</Text>
-                        <Text color={TextStyle.GREEN} cursor={"pointer"}  onClick={() => { nav("/account?q=" + provider.data.provider.operatorAddress) }}>{provider.data.provider.operatorAddress}</Text>
+                        <Text color={TextStyle.GREEN} cursor={"pointer"} onClick={() => { nav("/account?q=" + provider.data.provider.operatorAddress) }}>{provider.data.provider.operatorAddress}</Text>
                     </div>
                     <div className={style.row}>
                         <Text color={TextStyle.GREY} >Approval Address</Text>
@@ -45,7 +45,12 @@ export const Infomations = () => {
                     </div>
                     <div className={style.row}>
                         <Text color={TextStyle.GREY} >Endpoint</Text>
-                        <Text color={TextStyle.GREEN} cursor={"pointer"}>{provider.data.provider.endpoint}</Text>
+                        <Text color={TextStyle.GREEN}
+                            cursor={"pointer"}>
+                            <a href={provider.data.provider.endpoint} target='blank_' style={{color:"#00BA34"}}>
+                                {provider.data.provider.endpoint}
+                            </a>
+                        </Text>
                     </div>
                 </div>
             </Wrapper>

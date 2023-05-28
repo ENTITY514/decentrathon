@@ -5,7 +5,6 @@ import style from './account.module.css';
 import { Loader } from '../../Components/Loader/loader';
 import { Text, TextStyle } from '../../UI/Text/text';
 import { Wrapper } from '../../UI/Wrapper/wrapper';
-import { useAppSelector } from '../../Store/hooks/redux';
 import { Back } from '../../Components/Back/back';
 
 export const Account: React.FC = () => {
@@ -14,7 +13,7 @@ export const Account: React.FC = () => {
     const q = searchParams.get("q") as string
     const { data: account, isLoading, isError } = ProvidersApi.useGetAccountQuery(q)
 
-    if (account) {
+    if (account && account.data) {
         return (
             <div className={style.container}>
                 <div className={style.backTitle}>
@@ -48,7 +47,7 @@ export const Account: React.FC = () => {
                             return (
                                 <div className={style.row}>
                                     <Text color={TextStyle.GREEN} >{transaction.hash.toString().slice(0, 6) + "..." + transaction.hash.toString().slice(-6)}</Text>
-                                    <Text color={TextStyle.GREEN} >{transaction.block}</Text>
+                                    <Text color={TextStyle.GREEN} cursor={"pointer"} onClick={() => { nav("/block?block=" + transaction.block) }}>{transaction.block}</Text>
                                     <Text color={TextStyle.WHITE} >{transaction.time}</Text>
                                 </div>
                             )
@@ -72,9 +71,10 @@ export const Account: React.FC = () => {
         );
     }
     else {
+        nav("/explorer")
         return (
             <div className={style.container}>
-                <div>awidhbaowdbauowd</div>
+                <div></div>
             </div>
         );
     }

@@ -1,7 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
 import style from './nav.module.css';
 import { ImageUI } from '../../UI/Image/image';
-import { BlocksIcon, HomeIcon, SearchIcon, StatisticsIcon, TransactionsIcon } from './icons';
+import { BlocksIcon, HomeIcon, SearchIcon, StatisticsIcon, TransactionsIcon, ValidatorsIcon } from './icons';
 import { useAppDispatch, useAppSelector } from '../../Store/hooks/redux';
 import { SidebarSlice } from '../../Store/reducers/SideBar';
 import { WINDOWS } from '../../Store/models/ISideBar';
@@ -29,6 +29,9 @@ export const Nav = () => {
             break;
         case "statistics":
             dispatch(actions.setActiveWindow(WINDOWS.STATISTICS))
+            break;
+        case "validators":
+            dispatch(actions.setActiveWindow(WINDOWS.VALIDATORS))
             break;
 
         default:
@@ -74,6 +77,16 @@ export const Nav = () => {
                         className={(state.active_window !== WINDOWS.TRANSACTIONS) ? style.link : style.linkActive}
                         to={"transactions"}>
                         Transactions
+                    </Link>
+                </div>
+
+                <div className={(state.active_window !== WINDOWS.VALIDATORS) ? style.link_box : style.link_boxActive}>
+                    <ValidatorsIcon color={state.active_window} />
+                    <Link
+                        onClick={() => dispatch(actions.setActiveWindow(WINDOWS.VALIDATORS))}
+                        className={(state.active_window !== WINDOWS.VALIDATORS) ? style.link : style.linkActive}
+                        to={"validators"}>
+                        Validators
                     </Link>
                 </div>
 
