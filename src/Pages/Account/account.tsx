@@ -29,7 +29,7 @@ export const Account: React.FC = () => {
                         </div>
                         <div className={style.row_one}>
                             <Text color={TextStyle.GREY} >Balance</Text>
-                            <Text color={TextStyle.GREEN} cursor={"pointer"}>{account.data.balance}</Text>
+                            <Text color={TextStyle.WHITE}>{account.data.balance.toFixed(3)}</Text>
                         </div>
                     </div>
                 </Wrapper>

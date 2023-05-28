@@ -13,8 +13,8 @@ export const Validators = () => {
     if (validators) {
         return (
             <div className={style.container}>
+                <Title title={'Validators'}/>
                 <Wrapper padding='24px' margin='0'>
-                    <Title title={'Validators'} size={ISizes.MEDIUM} />
 
                     <div className={style.header}>
                         <Text color={TextStyle.GREY} >Validator Address</Text>

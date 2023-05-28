@@ -30,7 +30,7 @@ export const TransactionsList: React.FC = () => {
                             return (
                                 <div className={style.row}>
                                     <Text color={TextStyle.GREEN} cursor={"pointer"} onClick={() => { nav("/transaction?q=" + trasaction.hash) }}>{trasaction.hash.toString().slice(0, 6) + "..." + trasaction.hash.toString().slice(-6)}</Text>
-                                    <Text color={TextStyle.GREEN} onClick={() => { nav("/block?block=" + trasaction.block) }} cursor={"pointer"} >{trasaction.block}</Text>
+                                    <Text color={TextStyle.GREEN} onClick={() => { nav("/block?block=" + trasaction.block); dispatch(actions.setActiveWindow(WINDOWS.BLOCKS)) }} cursor={"pointer"} >{trasaction.block}</Text>
                                     <Text color={TextStyle.WHITE} >{trasaction.time}</Text>
                                 </div>
                             )
