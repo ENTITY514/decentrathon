@@ -21,10 +21,19 @@ export const Nav = () => {
         case "explorer":
             dispatch(actions.setActiveWindow(WINDOWS.EXPLORER))
             break;
+        case "account":
+            dispatch(actions.setActiveWindow(WINDOWS.EXPLORER))
+            break;
         case "blocks":
             dispatch(actions.setActiveWindow(WINDOWS.BLOCKS))
             break;
+        case "block":
+            dispatch(actions.setActiveWindow(WINDOWS.BLOCKS))
+            break;
         case "transactions":
+            dispatch(actions.setActiveWindow(WINDOWS.TRANSACTIONS))
+            break;
+        case "transaction":
             dispatch(actions.setActiveWindow(WINDOWS.TRANSACTIONS))
             break;
         case "statistics":

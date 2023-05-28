@@ -7,7 +7,6 @@ import { Loader } from '../../../../Components/Loader/loader';
 import { useAppDispatch } from '../../../../Store/hooks/redux';
 import { WINDOWS } from '../../../../Store/models/ISideBar';
 import { SidebarSlice } from '../../../../Store/reducers/SideBar';
-import { Transactions } from '../../transactions';
 
 export const TransactionsList: React.FC = () => {
     const dispatch = useAppDispatch()

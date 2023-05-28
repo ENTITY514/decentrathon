@@ -31,7 +31,7 @@ export const TransactionsList: React.FC = () => {
                 </div>
 
                 <div className={style.info_box}>
-                    {block.data.transactions ?
+                    {
                         block.data.transactions.map(trasaction => {
                             return (
                                 <div className={style.row}>
@@ -40,7 +40,8 @@ export const TransactionsList: React.FC = () => {
                                     <Text color={TextStyle.GREEN}>{trasaction.time}</Text>
                                 </div>
                             )
-                        }) : null}
+                        })
+                    }
                 </div>
             </Wrapper>
         );

@@ -29,31 +29,34 @@ export const Account: React.FC = () => {
                         </div>
                         <div className={style.row_one}>
                             <Text color={TextStyle.GREY} >Balance</Text>
-                            <Text color={TextStyle.WHITE}>{account.data.balance.toFixed(3)}</Text>
+                            <Text color={TextStyle.WHITE}>{account.data.balance.toFixed(3) + " BNB"}</Text>
                         </div>
                     </div>
                 </Wrapper>
-                <Wrapper padding='24px' margin='0'>
-                    <Title title={'Transactions'} size={ISizes.MEDIUM} />
+                {account.data.transactions.length !== 0 ?
+                    <Wrapper padding='24px' margin='0'>
+                        <Title title={'Transactions'} size={ISizes.MEDIUM} />
 
-                    <div className={style.header}>
-                        <Text color={TextStyle.GREY} >Txn Hash</Text>
-                        <Text color={TextStyle.GREY} >Block</Text>
-                        <Text color={TextStyle.GREY} >Age</Text>
-                    </div>
+                        <div className={style.header}>
+                            <Text color={TextStyle.GREY} >Txn Hash</Text>
+                            <Text color={TextStyle.GREY} >Block</Text>
+                            <Text color={TextStyle.GREY} >Age</Text>
+                        </div>
 
-                    <div className={style.info_box}>
-                        {account.data.transactions.map(transaction => {
-                            return (
-                                <div className={style.row}>
-                                    <Text color={TextStyle.GREEN} >{transaction.hash.toString().slice(0, 6) + "..." + transaction.hash.toString().slice(-6)}</Text>
-                                    <Text color={TextStyle.GREEN} cursor={"pointer"} onClick={() => { nav("/block?block=" + transaction.block) }}>{transaction.block}</Text>
-                                    <Text color={TextStyle.WHITE} >{transaction.time}</Text>
-                                </div>
-                            )
-                        })}
-                    </div>
-                </Wrapper>
+                        <div className={style.info_box}>
+                            {
+                                account.data.transactions.map(transaction => {
+                                    return (
+                                        <div className={style.row}>
+                                            <Text color={TextStyle.GREEN} >{transaction.hash.toString().slice(0, 6) + "..." + transaction.hash.toString().slice(-6)}</Text>
+                                            <Text color={TextStyle.GREEN} cursor={"pointer"} onClick={() => { nav("/block?block=" + transaction.block) }}>{transaction.block}</Text>
+                                            <Text color={TextStyle.WHITE} >{transaction.time}</Text>
+                                        </div>
+                                    )
+                                })}
+                        </div>
+                    </Wrapper> : null
+                }
             </div>
         )
     }

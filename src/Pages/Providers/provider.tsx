@@ -35,7 +35,8 @@ export const Provider: React.FC = () => {
                 <Infomations />
                 <PushEvent address={q} />
                 <InfoBoxes />
-                <Transactions />
+                {provider.data.transactions.length !== 0 ?
+                    <Transactions /> : null}
             </div>
         );
     }

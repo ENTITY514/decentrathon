@@ -5,8 +5,13 @@ import { Wrapper } from '../../../../UI/Wrapper/wrapper';
 import { ProvidersApi } from '../../../../services/project_api';
 import style from './transactions.module.css';
 import { Loader } from '../../../../Components/Loader/loader';
+import { useAppDispatch } from '../../../../Store/hooks/redux';
+import { SidebarSlice } from '../../../../Store/reducers/SideBar';
+import { WINDOWS } from '../../../../Store/models/ISideBar';
 
 export const Transactions = () => {
+    const dispatch = useAppDispatch()
+    const actions = SidebarSlice.actions
     const nav = useNavigate()
     const [searchParams] = useSearchParams();
     const q = searchParams.get("q") as string
@@ -23,15 +28,28 @@ export const Transactions = () => {
                 </div>
 
                 <div className={style.info_box}>
-                    {provider.data.transactions.map(transaction => {
-                        return (
-                            <div className={style.row} onClick={() => { nav("/transaction?q=" + transaction.hash) }}>
-                                <Text color={TextStyle.GREEN} cursor='pointer'>{transaction.hash.toString().slice(0, 6) + "..." + transaction.hash.toString().slice(-6)}</Text>
-                                <Text color={TextStyle.GREEN} cursor='pointer'>{transaction.block}</Text>
-                                <Text color={TextStyle.WHITE} cursor='pointer'>{transaction.time}</Text>
-                            </div>
-                        )
-                    })}
+                    {
+                        provider.data.transactions.map(transaction => {
+                            return (
+                                <div className={style.row}>
+                                    <Text
+                                        color={TextStyle.GREEN}
+                                        cursor={"pointer"}
+                                        onClick={() => { nav("/transaction?q=" + transaction.hash); dispatch(actions.setActiveWindow(WINDOWS.TRANSACTIONS)) }}
+                                    >
+                                        {transaction.hash.toString().slice(0, 6) + "..." + transaction.hash.toString().slice(-6)}
+                                    </Text>
+                                    <Text
+                                        color={TextStyle.GREEN}
+                                        cursor={"pointer"}
+                                        onClick={() => { nav("/block?block=" + transaction.block); dispatch(actions.setActiveWindow(WINDOWS.BLOCKS)) }}
+                                    >
+                                        {transaction.block}
+                                    </Text>
+                                    <Text color={TextStyle.WHITE} cursor='pointer'>{transaction.time}</Text>
+                                </div>
+                            )
+                        })}
                 </div>
             </Wrapper>
         );

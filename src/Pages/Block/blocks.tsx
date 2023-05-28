@@ -33,7 +33,8 @@ export const BlockWrapper = () => {
                 </div>
                 <BlockInfomation />
                 <Signatures />
-                <TransactionsList />
+                {block.data.transactions.length !== 0 ? <TransactionsList /> : null}
+
             </div>
         );
     }
