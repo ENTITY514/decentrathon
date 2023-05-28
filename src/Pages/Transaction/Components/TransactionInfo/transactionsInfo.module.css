@@ -1,0 +1,7 @@
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-left: 12px;
+    margin: 24px 0;
+}

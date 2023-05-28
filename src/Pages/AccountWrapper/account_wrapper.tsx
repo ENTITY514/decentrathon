@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../Store/hooks/redux';
 import { SidebarSlice } from '../../Store/reducers/SideBar';
 import { Title } from '../../UI/Title/title';
@@ -9,18 +9,19 @@ import { Provider } from '../Providers/provider';
 import { Account } from '../Account/account';
 
 export const AccountWrapper = () => {
-    const dispatch = useAppDispatch()
-    const state = useAppSelector(state => state.sidebarSlice)
-    const actions = SidebarSlice.actions
     const nav = useNavigate()
-    const { data: stats, isLoading, isError } = ProvidersApi.useGetIsProviderQuery(state.explorer_query)
+    const [searchParams] = useSearchParams();
+    const q = searchParams.get("q") as string
+    const { data: stats, isLoading, isError } = ProvidersApi.useGetIsProviderQuery(q)
     if (stats) {
         if (stats.data) {
+            nav("/provider?q=" + q)
             return (
                 <Provider />
             );
         }
         else {
+            nav("/account?q=" + q)
             return (
                 <Account />
             )

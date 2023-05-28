@@ -1,27 +1,22 @@
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Title } from '../../UI/Title/title';
 import { ProvidersApi } from '../../services/project_api';
-import { InfoBoxes } from './Components/InfoBoxes/infoBoxes';
-import { Infomations } from './Components/Information/information';
-import { Transactions } from './Components/Transactions/transactions';
-import style from './provider.module.css';
+import style from './transaction.module.css';
 import { Loader } from '../../Components/Loader/loader';
-import { PushEvent } from './Components/PushEvent/push_event';
+import { TransactionsInfo } from './Components/TransactionInfo/transactionInfo';
+import { Logs } from './Components/Logs/logs';
 
-
-export const Provider = () => {
+export const Transaction = () => {
     const nav = useNavigate()
     const [searchParams] = useSearchParams();
     const q = searchParams.get("q") as string
-    const { data: provider, isLoading, isError } = ProvidersApi.useGetServiceProviderQuery(q)
-    if (provider) {
+    const { data: transaction, isLoading, isError } = ProvidersApi.useGetTransactionQuery(q)
+    if (transaction) {
         return (
             <div className={style.container}>
-                <Title title={'Provider'} />
-                <Infomations />
-                <PushEvent />
-                <InfoBoxes />
-                <Transactions />
+                <Title title={'Transaction'} />
+                <TransactionsInfo />
+                <Logs />
             </div>
         );
     }

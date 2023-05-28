@@ -6,18 +6,14 @@ import { Explorer } from './Pages/Explorer/explorer';
 import { Provider } from './Pages/Providers/provider';
 import { Error } from './Pages/Error/error';
 import { Statistics } from './Pages/Statistics/statistics';
-import * as PusherPushNotifications from "@pusher/push-notifications-web";
 import { Blocks } from './Pages/Blocks/blocks';
 import { BlockWrapper } from './Pages/Block/blocks'; import { AccountWrapper } from './Pages/AccountWrapper/account_wrapper';
+import { Transactions } from './Pages/Transactions/transactions';
+import { Transaction } from './Pages/Transaction/transaction';
 ;
 
 export const App: React.FC = () => {
-  // const beamsClient = new PusherPushNotifications.Client({
-  //   instanceId: "2d2fd629-0157-4b64-a648-96ea1d631e52",
-  // });
 
-  // beamsClient.start().then(() => {
-  // });
   return (
     <div className={style.app}>
       <BrowserRouter>
@@ -28,6 +24,8 @@ export const App: React.FC = () => {
             <Route path={"/explorer"} element={<Explorer />} />
             <Route path={"/provider/*"} element={<Provider />} />
             <Route path={"/statistics"} element={<Statistics />} />
+            <Route path={"/transactions"} element={<Transactions />} />
+            <Route path={"/transaction"} element={<Transaction />} />
             <Route path={"/blocks"} element={<Blocks />} />
             <Route path={"/block"} element={<BlockWrapper />} />
             <Route path={"/exp"} element={<AccountWrapper />} />

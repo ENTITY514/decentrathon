@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import style from './nav.module.css';
 import { ImageUI } from '../../UI/Image/image';
 import { BlocksIcon, HomeIcon, SearchIcon, StatisticsIcon, TransactionsIcon } from './icons';
@@ -10,6 +10,31 @@ export const Nav = () => {
     const state = useAppSelector(state => state.sidebarSlice)
     const dispatch = useAppDispatch()
     const actions = SidebarSlice.actions
+
+    const location = useLocation()
+    let pathname = location.pathname
+    pathname = (pathname.replace('/', ''))
+    switch (pathname) {
+        case "":
+            dispatch(actions.setActiveWindow(WINDOWS.DASHBOARD))
+            break;
+        case "explorer":
+            dispatch(actions.setActiveWindow(WINDOWS.EXPLORER))
+            break;
+        case "blocks":
+            dispatch(actions.setActiveWindow(WINDOWS.BLOCKS))
+            break;
+        case "transactions":
+            dispatch(actions.setActiveWindow(WINDOWS.TRANSACTIONS))
+            break;
+        case "statistics":
+            dispatch(actions.setActiveWindow(WINDOWS.STATISTICS))
+            break;
+
+        default:
+            break;
+    }
+
     return (
         <div className={style.container}>
             <div className={style.container1}>

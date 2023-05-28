@@ -1,20 +1,16 @@
-import { useNavigate } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../../Store/hooks/redux';
-import { SidebarSlice } from '../../Store/reducers/SideBar';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { ISizes, Title } from '../../UI/Title/title';
 import { ProvidersApi } from '../../services/project_api';
 import style from './account.module.css';
 import { Loader } from '../../Components/Loader/loader';
-import { Provider } from 'react-redux';
 import { Text, TextStyle } from '../../UI/Text/text';
 import { Wrapper } from '../../UI/Wrapper/wrapper';
 
 export const Account = () => {
-    const dispatch = useAppDispatch()
-    const state = useAppSelector(state => state.sidebarSlice)
-    const actions = SidebarSlice.actions
     const nav = useNavigate()
-    const { data: account, isLoading, isError } = ProvidersApi.useGetAccountQuery(state.explorer_query)
+    const [searchParams] = useSearchParams();
+    const q = searchParams.get("q") as string
+    const { data: account, isLoading, isError } = ProvidersApi.useGetAccountQuery(q)
     if (account) {
         return (
             <div className={style.container}>
@@ -24,12 +20,33 @@ export const Account = () => {
                     <div className={style.info_box}>
                         <div className={style.row}>
                             <Text color={TextStyle.GREY} >Address</Text>
-                            <Text color={TextStyle.GREEN}>{state.explorer_query}</Text>
+                            <Text color={TextStyle.GREEN}>{q}</Text>
                         </div>
                         <div className={style.row}>
                             <Text color={TextStyle.GREY} >Balance</Text>
                             <Text color={TextStyle.GREEN} cursor={"pointer"}>{account.data.balance}</Text>
                         </div>
+                    </div>
+                </Wrapper>
+                <Wrapper padding='24px' margin='0'>
+                    <Title title={'Transactions'} size={ISizes.MEDIUM} />
+
+                    <div className={style.header}>
+                        <Text color={TextStyle.GREY} >Txn Hash</Text>
+                        <Text color={TextStyle.GREY} >Block</Text>
+                        <Text color={TextStyle.GREY} >Age</Text>
+                    </div>
+
+                    <div className={style.info_box}>
+                        {account.data.transactions.map(transaction => {
+                            return (
+                                <div className={style.row}>
+                                    <Text color={TextStyle.GREEN} >{transaction.hash}</Text>
+                                    <Text color={TextStyle.GREEN} >{transaction.block}</Text>
+                                    <Text color={TextStyle.WHITE} >{transaction.time}</Text>
+                                </div>
+                            )
+                        })}
                     </div>
                 </Wrapper>
             </div>

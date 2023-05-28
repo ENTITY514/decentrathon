@@ -125,18 +125,20 @@ type TransactionsType = {
 
 
 type getTransactionType = {
-    hash: string
-    block: string
-    time: string
-    gas: GasType
-    logs: any
+    data: {
+        hash: string
+        block: string
+        time: string
+        gas: GasType
+        logs: any
+    }
 }
 type GasType = {
     maxGas: string
     usedGas: string
 }
 
-const url = "https://0691-2-133-159-46.ngrok-free.app/api"
+const url = "https://decentrathon.undefined.ink/api"
 
 export const ProvidersApi = createApi({
     reducerPath: "ProvidersApi",
@@ -152,7 +154,7 @@ export const ProvidersApi = createApi({
                 url: `/getServiceProviders`
             })
         }),
-        getServiceProvider: build.query<ProvidersType, string>({
+        getServiceProvider: build.query<getServiceProvidersType, string>({
             query: (address) => ({
                 url: `/getServiceProvider/${address}`
             })
