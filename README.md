@@ -6,6 +6,6 @@ Our team is ready to present the solution to task number 3. We have made every e
 1. Clone repository from Github
 2. Run these 2 simple commands:
 
-![code 2](https://github.com/ENTITY514/decentrathon/assets/60911665/af2a55dc-0228-48a2-b036-21354981cdc6)
+![code 2](https://github.com/ENTITY514/decentrathon/assets/60911665/5f4cf007-bc32-4f62-8968-495171483bbb)
 
 <b>✨ Everything works! You are wonderful! ✨</b>
