@@ -4,11 +4,12 @@ import { ISizes, Title } from '../../../../UI/Title/title';
 import { Wrapper } from '../../../../UI/Wrapper/wrapper';
 import style from './information.module.css';
 import { ProvidersApi } from '../../../../services/project_api';
-import { useAppSelector } from '../../../../Store/hooks/redux';
 
 export const Infomations = () => {
-    const state = useAppSelector(state => state.sidebarSlice)
-    const { data: provider } = ProvidersApi.useGetServiceProviderQuery(state.explorer_query)
+    const nav = useNavigate()
+    const [searchParams] = useSearchParams();
+    const q = searchParams.get("q") as string
+    const { data: provider, isLoading, isError } = ProvidersApi.useGetServiceProviderQuery(q)
     if (provider) {
         return (
             <Wrapper padding='24px' margin='0'>

@@ -1,3 +1,4 @@
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { InfoBox } from '../../../../Components/InfoBox/infoBox';
 import { useAppSelector } from '../../../../Store/hooks/redux';
 import { Title } from '../../../../UI/Title/title';
@@ -13,15 +14,17 @@ function formatTime(milliseconds: number) {
 }
 
 export const InfoBoxes = () => {
-    const state = useAppSelector(state => state.sidebarSlice)
-    const { data: provider } = ProvidersApi.useGetServiceProviderQuery(state.explorer_query)
+    const nav = useNavigate()
+    const [searchParams] = useSearchParams();
+    const q = searchParams.get("q") as string
+    const { data: provider, isLoading, isError } = ProvidersApi.useGetServiceProviderQuery(q)
     if (provider) {
         return (
             <div className={style.container}>
                 <div className={style.box_one}>
-                    <InfoBox label={'Balance'} value={provider.data.provider.balance + "BNB"} />
-                    <InfoBox label={'Read price'} value={provider.data.price.readPrice + "BNB"} />
-                    <InfoBox label={'Store price'} value={provider.data.price.storePrice + "BNB"} />
+                    <InfoBox label={'Balance'} value={provider.data.provider.balance + " BNB"} />
+                    <InfoBox label={'Read price'} value={provider.data.price.readPrice + " BNB"} />
+                    <InfoBox label={'Store price'} value={provider.data.price.storePrice + " BNB"} />
                 </div>
                 <div className={style.box_two}>
                     <InfoBox label={'Latency'} value={provider.data.kpi.latency + "ms"} />

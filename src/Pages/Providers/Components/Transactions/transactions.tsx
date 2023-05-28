@@ -1,4 +1,4 @@
-import { useAppSelector } from '../../../../Store/hooks/redux';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Text, TextStyle } from '../../../../UI/Text/text';
 import { ISizes, Title } from '../../../../UI/Title/title';
 import { Wrapper } from '../../../../UI/Wrapper/wrapper';
@@ -6,8 +6,10 @@ import { ProvidersApi } from '../../../../services/project_api';
 import style from './transactions.module.css';
 
 export const Transactions = () => {
-    const state = useAppSelector(state => state.sidebarSlice)
-    const { data: provider } = ProvidersApi.useGetServiceProviderQuery(state.explorer_query)
+    const nav = useNavigate()
+    const [searchParams] = useSearchParams();
+    const q = searchParams.get("q") as string
+    const { data: provider, isLoading, isError } = ProvidersApi.useGetServiceProviderQuery(q)
     if (provider) {
         return (
             <Wrapper padding='24px' margin='0'>
