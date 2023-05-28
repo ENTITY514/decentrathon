@@ -3,6 +3,8 @@ import { ISizes, Title } from '../../../../UI/Title/title';
 import { Wrapper } from '../../../../UI/Wrapper/wrapper';
 import style from './logs.module.css';
 import { ProvidersApi } from '../../../../services/project_api';
+import ReactJson from 'react-json-view'
+
 
 export const Logs: React.FC = () => {
     const nav = useNavigate()
@@ -15,6 +17,7 @@ export const Logs: React.FC = () => {
             <Wrapper padding='24px' margin='0'>
                 <Title title={'Logs'} size={ISizes.MEDIUM} />
                 <div className={style.logs}>
+                    <ReactJson theme={"monokai"} src={transaction.data.logs} collapsed={true} />
                 </div>
             </Wrapper>
         );

@@ -11,7 +11,7 @@ export const Transactions = () => {
     if (transactions) {
         return (
             <div className={style.container}>
-                <Title title={'Transaction'} />
+                <Title title={'Transactions'} />
                 <TransactionsList />
             </div>
         );

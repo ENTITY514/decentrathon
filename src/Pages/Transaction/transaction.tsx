@@ -1,10 +1,11 @@
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import { Title } from '../../UI/Title/title';
 import { ProvidersApi } from '../../services/project_api';
 import style from './transaction.module.css';
 import { Loader } from '../../Components/Loader/loader';
 import { TransactionsInfo } from './Components/TransactionInfo/transactionInfo';
 import { Logs } from './Components/Logs/logs';
+import { Back } from '../../Components/Back/back';
 
 export const Transaction = () => {
     const nav = useNavigate()
@@ -14,7 +15,10 @@ export const Transaction = () => {
     if (transaction) {
         return (
             <div className={style.container}>
-                <Title title={'Transaction'} />
+                <div className={style.backTitle}>
+                    <Back url={'/transactions'} />
+                    <Title title={'Transaction'} />
+                </div>
                 <TransactionsInfo />
                 <Logs />
             </div>

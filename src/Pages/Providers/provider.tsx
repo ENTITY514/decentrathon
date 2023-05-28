@@ -7,6 +7,7 @@ import { Transactions } from './Components/Transactions/transactions';
 import style from './provider.module.css';
 import { Loader } from '../../Components/Loader/loader';
 import { PushEvent } from './Components/PushEvent/push_event';
+import { Back } from '../../Components/Back/back';
 
 
 export const Provider = () => {
@@ -17,9 +18,12 @@ export const Provider = () => {
     if (provider) {
         return (
             <div className={style.container}>
-                <Title title={'Provider'} />
+                <div className={style.backTitle}>
+                    <Back url={'/'} />
+                    <Title title={'Provider'} />
+                </div>
                 <Infomations />
-                <PushEvent />
+                <PushEvent address={q}/>
                 <InfoBoxes />
                 <Transactions />
             </div>

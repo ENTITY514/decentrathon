@@ -6,47 +6,34 @@ import style from './information.module.css';
 import React from 'react';
 import { ProvidersApi } from '../../../../services/project_api';
 
-interface Ibl {
-    block: string
-}
-export const BlockInfomation: React.FC<Ibl> = ({ block }) => {
-    const { data: block_, isLoading, isError } = ProvidersApi.useGetBlockQuery(block)
-    if (block_) {
+export const BlockInfomation: React.FC = () => {
+    const [searchParams] = useSearchParams();
+    const q = searchParams.get("block") as string
+    const { data: block, isLoading, isError } = ProvidersApi.useGetBlockQuery(q)
+    if (block) {
         return (
             <Wrapper padding='24px' margin='0'>
                 <Title title={'Information'} size={ISizes.MEDIUM} />
                 <div className={style.info_box}>
                     <div className={style.row}>
-                        <Text color={TextStyle.GREY} >SP Name</Text>
-                        <Text color={TextStyle.WHITE}>Zenon</Text>
+                        <Text color={TextStyle.GREY} >Index</Text>
+                        <Text color={TextStyle.WHITE}>{block.data.index}</Text>
                     </div>
                     <div className={style.row}>
-                        <Text color={TextStyle.GREY} >Seal Address</Text>
-                        <Text color={TextStyle.GREEN} cursor={"pointer"}>{block_.data.hash}</Text>
+                        <Text color={TextStyle.GREY} >Hash</Text>
+                        <Text color={TextStyle.GREEN} cursor={"pointer"}>{block.data.hash.toString().slice(0, 6) + "..." + block.data.hash.toString().slice(-6)}</Text>
                     </div>
                     <div className={style.row}>
-                        <Text color={TextStyle.GREY} >Funding Address</Text>
-                        <Text color={TextStyle.GREEN} cursor={"pointer"}>0xd641C35f947Eb60676f0e0793691bB174256C651</Text>
+                        <Text color={TextStyle.GREY} >Age</Text>
+                        <Text color={TextStyle.GREEN} cursor={"pointer"}>{block.data.time}</Text>
                     </div>
                     <div className={style.row}>
-                        <Text color={TextStyle.GREY} >Operator Address</Text>
-                        <Text color={TextStyle.GREEN} cursor={"pointer"}>0x22804504786F44289D4156E7317142e25B92c00e</Text>
+                        <Text color={TextStyle.GREY} >Proposer</Text>
+                        <Text color={TextStyle.GREEN} cursor={"pointer"}>{block.data.proposer.toString().slice(0, 6) + "..." + block.data.proposer.toString().slice(-6)}</Text>
                     </div>
                     <div className={style.row}>
-                        <Text color={TextStyle.GREY} >Approval Address</Text>
-                        <Text color={TextStyle.GREEN} cursor={"pointer"}>0xaF07AdBb21029adf12FB6E4515Ed8dA0A7e252a2</Text>
-                    </div>
-                    <div className={style.row}>
-                        <Text color={TextStyle.GREY} >Total Deposit</Text>
-                        <Text color={TextStyle.WHITE}>1,000 BNB</Text>
-                    </div>
-                    <div className={style.row}>
-                        <Text color={TextStyle.GREY} >Status</Text>
-                        <Text color={TextStyle.WHITE}>Active</Text>
-                    </div>
-                    <div className={style.row}>
-                        <Text color={TextStyle.GREY} >Endpoint</Text>
-                        <Text color={TextStyle.GREEN} cursor={"pointer"}>https://gnfd-testnet-sp-2.bnbchain.org</Text>
+                        <Text color={TextStyle.GREY} >Transactions Count</Text>
+                        <Text color={TextStyle.GREEN} cursor={"pointer"}>{block.data.transactions.length}</Text>
                     </div>
                 </div>
             </Wrapper>

@@ -18,7 +18,7 @@ export const TransactionsInfo: React.FC = () => {
                 <div className={style.info_box}>
                     <div className={style.row}>
                         <Text color={TextStyle.GREY} >Txn Hash</Text>
-                        <Text color={TextStyle.WHITE}>{transaction.data.hash}</Text>
+                        <Text color={TextStyle.GREEN}>{transaction.data.hash.toString().slice(0, 6) + "..." + transaction.data.hash.toString().slice(-6)}</Text>
                     </div>
                     <div className={style.row}>
                         <Text color={TextStyle.GREY} >Block Height</Text>
@@ -26,11 +26,11 @@ export const TransactionsInfo: React.FC = () => {
                     </div>
                     <div className={style.row}>
                         <Text color={TextStyle.GREY} >Max Gas & Gas Used</Text>
-                        <Text color={TextStyle.GREEN} cursor={"pointer"}>{transaction.data.gas.maxGas} | {transaction.data.gas.usedGas}</Text>
+                        <Text color={TextStyle.WHITE} cursor={"pointer"}>{transaction.data.gas.maxGas} | {transaction.data.gas.usedGas}</Text>
                     </div>
                     <div className={style.row}>
                         <Text color={TextStyle.GREY} >Age</Text>
-                        <Text color={TextStyle.GREEN} cursor={"pointer"}>{transaction.data.time}</Text>
+                        <Text color={TextStyle.WHITE} cursor={"pointer"}>{transaction.data.time}</Text>
                     </div>
                 </div>
             </Wrapper>

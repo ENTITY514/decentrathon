@@ -4,6 +4,23 @@
     grid-gap: 24px;
     height: 70px;
 }
+.input {
+    padding:5px 5px 5px 10px;
+    width:auto;
+    height:auto;
+    border-radius:12px;
+    background-color:#1E2026;
+    border:2px solid #2E323A;
+    align-items:center;
+    color: rgba(255, 255, 255, 0.39);
+    font-size: 16px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    outline: none;
+}
 
 .button {
     background: #00BA34;

@@ -11,7 +11,7 @@ export const Account = () => {
     const [searchParams] = useSearchParams();
     const q = searchParams.get("q") as string
     const { data: account, isLoading, isError } = ProvidersApi.useGetAccountQuery(q)
-    if (account) {
+    if (account && account.data.balance!==undefined) {
         return (
             <div className={style.container}>
                 <Title title={'Dashboard'} />
@@ -66,9 +66,10 @@ export const Account = () => {
         );
     }
     else {
+        nav("/error")
         return (
             <div className={style.container}>
-                <Title title={'Хз что не так'} />
+                <Title title={'Error'} />
             </div>
         );
     }

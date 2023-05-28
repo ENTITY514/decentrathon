@@ -1,0 +1,15 @@
+.row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    padding-left: 12px;
+    margin: 24px 0;
+}
+
+.header {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    border-bottom: 1px solid #2E323A;
+    margin-top: 24px;
+    padding-left: 10px;
+    padding-bottom: 6px;
+}

@@ -9,19 +9,18 @@ import { Provider } from '../Providers/provider';
 import { Account } from '../Account/account';
 
 export const AccountWrapper = () => {
+    const state = useAppSelector(state => state.sidebarSlice.explorer_query)
     const nav = useNavigate()
-    const [searchParams] = useSearchParams();
-    const q = searchParams.get("q") as string
-    const { data: stats, isLoading, isError } = ProvidersApi.useGetIsProviderQuery(q)
+    const { data: stats, isLoading, isError } = ProvidersApi.useGetIsProviderQuery(state)
     if (stats) {
         if (stats.data) {
-            nav("/provider?q=" + q)
+            nav("/provider?q=" + state)
             return (
                 <Provider />
             );
         }
         else {
-            nav("/account?q=" + q)
+            nav("/account?q=" + state)
             return (
                 <Account />
             )

@@ -1,5 +1,11 @@
-.container{
+.container {
     display: grid;
     grid-template-columns: 1fr;
     grid-gap: 24px;
+}
+
+
+.backTitle {
+    display: flex;
+    align-items: center;
 }

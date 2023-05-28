@@ -27,7 +27,7 @@ export const BlocksInformation: React.FC = () => {
                             <div className={style.row} onClick={() => { HandleClick(block.index) }}>
                                 <Text color={TextStyle.GREEN} cursor={"pointer"} >{block.index}</Text>
                                 <Text color={TextStyle.WHITE} >{block.time}</Text>
-                                <Text color={TextStyle.GREEN} cursor={"pointer"} >{block.txCount}</Text>
+                                <Text color={TextStyle.WHITE} cursor={"pointer"} >{block.txCount}</Text>
                             </div>
                         )
                     })}
