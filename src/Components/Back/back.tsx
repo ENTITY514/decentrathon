@@ -5,7 +5,6 @@ type BackType = {
     url: string
 }
 export const Back: React.FC<BackType> = ({ url }) => {
-    const nav = useNavigate()
     const Navigate = () => {
         window.history.back();
     }

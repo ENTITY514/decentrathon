@@ -21,19 +21,19 @@ export const Infomations = () => {
                     </div>
                     <div className={style.row}>
                         <Text color={TextStyle.GREY} >Seal Address</Text>
-                        <Text color={TextStyle.GREEN} cursor={"pointer"}>{provider.data.provider.sealAddress}</Text>
+                        <Text color={TextStyle.GREEN} cursor={"pointer"} onClick={() => { nav("/account?q=" + provider.data.provider.sealAddress) }}>{provider.data.provider.sealAddress}</Text>
                     </div>
                     <div className={style.row}>
                         <Text color={TextStyle.GREY} >Funding Address</Text>
-                        <Text color={TextStyle.GREEN} cursor={"pointer"}>{provider.data.provider.fundingAddress}</Text>
+                        <Text color={TextStyle.GREEN} cursor={"pointer"} onClick={() => { nav("/account?q=" + provider.data.provider.fundingAddress) }}>{provider.data.provider.fundingAddress}</Text>
                     </div>
                     <div className={style.row}>
-                        <Text color={TextStyle.GREY} >Operator Address</Text>
-                        <Text color={TextStyle.GREEN} cursor={"pointer"}>{provider.data.provider.operatorAddress}</Text>
+                        <Text color={TextStyle.GREY}>Operator Address</Text>
+                        <Text color={TextStyle.GREEN} cursor={"pointer"}  onClick={() => { nav("/account?q=" + provider.data.provider.operatorAddress) }}>{provider.data.provider.operatorAddress}</Text>
                     </div>
                     <div className={style.row}>
                         <Text color={TextStyle.GREY} >Approval Address</Text>
-                        <Text color={TextStyle.GREEN} cursor={"pointer"}>{provider.data.provider.approvalAddress}</Text>
+                        <Text color={TextStyle.GREEN} cursor={"pointer"} onClick={() => { nav("/account?q=" + provider.data.provider.approvalAddress) }}>{provider.data.provider.approvalAddress}</Text>
                     </div>
                     <div className={style.row}>
                         <Text color={TextStyle.GREY} >Total Deposit</Text>

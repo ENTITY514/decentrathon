@@ -1,4 +1,4 @@
-import { useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Text, TextStyle } from '../../../../UI/Text/text';
 import { ISizes, Title } from '../../../../UI/Title/title';
 import { Wrapper } from '../../../../UI/Wrapper/wrapper';
@@ -7,6 +7,7 @@ import React from 'react';
 import { ProvidersApi } from '../../../../services/project_api';
 
 export const BlockInfomation: React.FC = () => {
+    const nav = useNavigate()
     const [searchParams] = useSearchParams();
     const q = searchParams.get("block") as string
     const { data: block, isLoading, isError } = ProvidersApi.useGetBlockQuery(q)
@@ -17,7 +18,7 @@ export const BlockInfomation: React.FC = () => {
                 <div className={style.info_box}>
                     <div className={style.row}>
                         <Text color={TextStyle.GREY} >Index</Text>
-                        <Text color={TextStyle.WHITE}>{block.data.index}</Text>
+                        <Text color={TextStyle.GREEN}>{block.data.index}</Text>
                     </div>
                     <div className={style.row}>
                         <Text color={TextStyle.GREY} >Hash</Text>
@@ -25,11 +26,11 @@ export const BlockInfomation: React.FC = () => {
                     </div>
                     <div className={style.row}>
                         <Text color={TextStyle.GREY} >Age</Text>
-                        <Text color={TextStyle.GREEN} cursor={"pointer"}>{block.data.time}</Text>
+                        <Text color={TextStyle.WHITE} cursor={"pointer"}>{block.data.time}</Text>
                     </div>
                     <div className={style.row}>
                         <Text color={TextStyle.GREY} >Proposer</Text>
-                        <Text color={TextStyle.GREEN} cursor={"pointer"}>{block.data.proposer.toString().slice(0, 6) + "..." + block.data.proposer.toString().slice(-6)}</Text>
+                        <Text color={TextStyle.GREEN} onClick={() => { nav("/account?q=" + block.data.proposer) }} cursor={"pointer"}>{block.data.proposer.toString().slice(0, 6) + "..." + block.data.proposer.toString().slice(-6)}</Text>
                     </div>
                     <div className={style.row}>
                         <Text color={TextStyle.GREY} >Transactions Count</Text>

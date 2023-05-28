@@ -1,9 +1,9 @@
 import { useNavigate } from 'react-router-dom';
 import { Text, TextStyle } from '../../../../UI/Text/text';
-import { Title } from '../../../../UI/Title/title';
 import { Wrapper } from '../../../../UI/Wrapper/wrapper';
 import style from './transactionsList.module.css';
 import { ProvidersApi } from '../../../../services/project_api';
+import { Loader } from '../../../../Components/Loader/loader';
 
 export const TransactionsList: React.FC = () => {
     const nav = useNavigate()
@@ -37,9 +37,7 @@ export const TransactionsList: React.FC = () => {
     }
     else {
         return (
-            <div className={style.container}>
-                <Title title={'Хз что не так'} />
-            </div>
+            <Loader />
         );
     }
 }

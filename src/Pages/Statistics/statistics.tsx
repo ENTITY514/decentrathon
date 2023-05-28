@@ -11,7 +11,17 @@ import { ProvidersApi } from '../../services/project_api';
 
 export const Statistics: React.FC = () => {
     const nav = useNavigate()
-    const { data: stats, isLoading, isError } = ProvidersApi.useGetStatQuery("")
+    const { data: stats, isLoading, isError, refetch } = ProvidersApi.useGetStatQuery("")
+    const [update, setUpdate] = React.useState<boolean>(false)
+    React.useEffect(() => {
+        let timeout = setTimeout(() => {
+            refetch()
+            setUpdate(prev => !prev)
+        }, 2000)
+        return () => {
+            clearTimeout(timeout)
+        }
+    }, [update])
     if (stats) {
         return (
             <div className={style.container}>

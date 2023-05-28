@@ -6,11 +6,22 @@ import { ActiveServiceProviders } from './Components/ActiveServiceProviders/acti
 import { ActiveServiceProvidersCharts } from './Components/ActiveServiceProvidersCharts/activeServiceProvidersCharts';
 import { InfoBoxes } from './Components/InfoBoxes/infoBoxes';
 import style from './dashboard.module.css';
+import React from 'react';
 
 export const Dashboard = () => {
     const nav = useNavigate()
-    const { data: stats, isLoading: stats_load, isError } = ProvidersApi.useGetStatQuery("")
+    const { data: stats, isLoading: stats_load, isError, refetch } = ProvidersApi.useGetStatQuery("")
     const { data: service, isLoading: service_load } = ProvidersApi.useGetServiceProvidersQuery("")
+    const [update, setUpdate] = React.useState<boolean>(false)
+    React.useEffect(() => {
+        let timeout = setTimeout(() => {
+            refetch()
+            setUpdate(prev => !prev)
+        }, 2000)
+        return () => {
+            clearTimeout(timeout)
+        }
+    }, [update])
     if (stats && service) {
         return (
             <div className={style.container}>

@@ -18,7 +18,7 @@ export const TransactionsInfo: React.FC = () => {
                 <div className={style.info_box}>
                     <div className={style.row}>
                         <Text color={TextStyle.GREY} >Txn Hash</Text>
-                        <Text color={TextStyle.GREEN}>{transaction.data.hash.toString().slice(0, 6) + "..." + transaction.data.hash.toString().slice(-6)}</Text>
+                        <Text color={TextStyle.GREEN}>{transaction.data.hash}</Text>
                     </div>
                     <div className={style.row}>
                         <Text color={TextStyle.GREY} >Block Height</Text>

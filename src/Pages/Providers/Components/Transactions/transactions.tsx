@@ -4,6 +4,7 @@ import { ISizes, Title } from '../../../../UI/Title/title';
 import { Wrapper } from '../../../../UI/Wrapper/wrapper';
 import { ProvidersApi } from '../../../../services/project_api';
 import style from './transactions.module.css';
+import { Loader } from '../../../../Components/Loader/loader';
 
 export const Transactions = () => {
     const nav = useNavigate()
@@ -24,10 +25,10 @@ export const Transactions = () => {
                 <div className={style.info_box}>
                     {provider.data.transactions.map(transaction => {
                         return (
-                            <div className={style.row}>
-                                <Text color={TextStyle.GREEN} >{transaction.hash.toString().slice(0, 6) + "..." + transaction.hash.toString().slice(-6)}</Text>
-                                <Text color={TextStyle.GREEN} >{transaction.block}</Text>
-                                <Text color={TextStyle.WHITE} >{transaction.time}</Text>
+                            <div className={style.row} onClick={() => { nav("/transaction?q=" + transaction.hash) }}>
+                                <Text color={TextStyle.GREEN} cursor='pointer'>{transaction.hash.toString().slice(0, 6) + "..." + transaction.hash.toString().slice(-6)}</Text>
+                                <Text color={TextStyle.GREEN} cursor='pointer'>{transaction.block}</Text>
+                                <Text color={TextStyle.WHITE} cursor='pointer'>{transaction.time}</Text>
                             </div>
                         )
                     })}
@@ -37,9 +38,7 @@ export const Transactions = () => {
     }
     else {
         return (
-            <div className={style.container}>
-                <Title title={'Хз что не так'} />
-            </div>
+            <Loader />
         );
     }
 }

@@ -6,12 +6,24 @@ import { ProvidersApi } from '../../services/project_api';
 import { Loader } from '../../Components/Loader/loader';
 import { TransactionsList } from './Components/Transactions/TransactionsList/transactionsList';
 import { Back } from '../../Components/Back/back';
+import React from 'react';
+import { Signatures } from './Components/Signatures/signatures';
 
 export const BlockWrapper = () => {
     const nav = useNavigate()
     const [searchParams] = useSearchParams();
     const q = searchParams.get("block") as string
-    const { data: block, isLoading, isError } = ProvidersApi.useGetBlockQuery(q)
+    const { data: block, isLoading, isError, refetch } = ProvidersApi.useGetBlockQuery(q)
+    const [update, setUpdate] = React.useState<boolean>(false)
+    React.useEffect(() => {
+        let timeout = setTimeout(() => {
+            refetch()
+            setUpdate(prev => !prev)
+        }, 60000)
+        return () => {
+            clearTimeout(timeout)
+        }
+    }, [update])
     if (block) {
         return (
             <div className={style.container}>
@@ -20,6 +32,7 @@ export const BlockWrapper = () => {
                     <Title title={'Block'} />
                 </div>
                 <BlockInfomation />
+                <Signatures />
                 <TransactionsList />
             </div>
         );

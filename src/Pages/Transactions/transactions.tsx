@@ -4,10 +4,21 @@ import { ProvidersApi } from '../../services/project_api';
 import style from './transactions.module.css';
 import { Loader } from '../../Components/Loader/loader';
 import { TransactionsList } from './Components/TransactionsList/transactionsList';
+import React from 'react';
 
 export const Transactions = () => {
     const nav = useNavigate()
-    const { data: transactions, isLoading, isError } = ProvidersApi.useGetBlocksQuery("")
+    const { data: transactions, isLoading, isError, refetch } = ProvidersApi.useGetTransactionsQuery("")
+    const [update, setUpdate] = React.useState<boolean>(false)
+    React.useEffect(() => {
+        let timeout = setTimeout(() => {
+            refetch()
+            setUpdate(prev => !prev)
+        }, 2000)
+        return () => {
+            clearTimeout(timeout)
+        }
+    }, [update])
     if (transactions) {
         return (
             <div className={style.container}>
@@ -31,9 +42,7 @@ export const Transactions = () => {
     }
     else {
         return (
-            <div className={style.container}>
-                <Title title={'Хз что не так'} />
-            </div>
+            <Loader />
         );
     }
 }

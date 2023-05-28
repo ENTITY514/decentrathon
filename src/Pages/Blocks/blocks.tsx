@@ -4,10 +4,21 @@ import { ProvidersApi } from '../../services/project_api';
 import { BlocksInformation } from './Components/BlocksList/blocksList';
 import style from './blocks.module.css';
 import { Loader } from '../../Components/Loader/loader';
+import React from 'react';
 
 export const Blocks = () => {
     const nav = useNavigate()
-    const { data: blocks, isLoading, isError } = ProvidersApi.useGetBlocksQuery("")
+    const { data: blocks, isLoading, isError, refetch } = ProvidersApi.useGetBlocksQuery("")
+    const [update, setUpdate] = React.useState<boolean>(false)
+    React.useEffect(() => {
+        let timeout = setTimeout(() => {
+            refetch()
+            setUpdate(prev => !prev)
+        }, 2000)
+        return () => {
+            clearTimeout(timeout)
+        }
+    }, [update])
     if (blocks) {
         return (
             <div className={style.container}>

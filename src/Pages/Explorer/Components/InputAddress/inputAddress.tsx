@@ -12,15 +12,16 @@ export const InputAddress = () => {
     const state = useAppSelector(state => state.sidebarSlice)
     const actions = SidebarSlice.actions
     const handleChange = () => {
-        if (inp_ref.current) { dispatch(actions.setExplorerQuery(inp_ref.current.value))
+        if (inp_ref.current) {
+            dispatch(actions.setExplorerQuery(inp_ref.current.value))
         }
     }
     const handleClick = () => {
-        nav("/exp")
+        nav("/account?q=" + inp_ref.current?.value)
     }
     return (
         <form className={style.container}>
-            <input type="text" value={state.explorer_query} ref={inp_ref} onChange={handleChange} placeholder='Address' className={style.input}/>
+            <input type="text" value={state.explorer_query} ref={inp_ref} onChange={handleChange} placeholder='Address' className={style.input} />
             <button className={style.button} onClick={handleClick}>Go</button>
         </form>
     );

@@ -4,10 +4,28 @@
     margin: 24px 0;
 }
 
+.backTitle {
+    display: flex;
+    align-items: center;
+}
+
+.row_one {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 24px 0;
+}
+
 .header {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr;
     border-bottom: 1px solid #2E323A;
     margin: 24px 0;
     padding-left: 10px;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 24px;
 }

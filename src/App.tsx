@@ -28,7 +28,7 @@ export const App: React.FC = () => {
             <Route path={"/transaction"} element={<Transaction />} />
             <Route path={"/blocks"} element={<Blocks />} />
             <Route path={"/block"} element={<BlockWrapper />} />
-            <Route path={"/exp"} element={<AccountWrapper />} />
+            <Route path={"/account"} element={<AccountWrapper />} />
             <Route path={"/error"} element={<Error />} />
           </Routes>
         </div>

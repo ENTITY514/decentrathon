@@ -104,6 +104,10 @@ type getBlockType = {
         time: string
         proposer: string
         transactions: Array<getBlockTransactionsType>
+        signatures: Array<{
+            validator_address: string,
+            timestamp: string
+        }>
     }
 }
 
