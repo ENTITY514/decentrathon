@@ -150,7 +150,7 @@ type ValidatorType = {
     votingPower: string
 }
 
-const url = "https://decentrathon.undefined.ink/api"
+const url = "https://bf81-178-89-138-208.ngrok-free.app"
 
 export const ProvidersApi = createApi({
     reducerPath: "ProvidersApi",
